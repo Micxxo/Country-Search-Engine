@@ -17,7 +17,7 @@ This project uses Vite as the build tool and leverages the REST Countries API. F
    ```
 
 2. Create .env file
-3. Opem .env file and add the following lines:
+3. Open .env file and add the following lines:
    <code>
    VITE_BASE_URL=https://restcountries.com
    VITE_API_VERSION_LATEST=v3.1
