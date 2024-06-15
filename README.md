@@ -13,7 +13,7 @@ This project uses Vite as the build tool and leverages the REST Countries API. F
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/your-repo-name.git
+   git clone https://github.com/Micxxo/Country-Search-Engine.git
    ```
 
 2. Create .env file
