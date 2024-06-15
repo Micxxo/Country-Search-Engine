@@ -151,7 +151,7 @@ export default function Country() {
                 </div>
                 <CountryBadges
                   datas={data.altSpellings}
-                  className="mt-2 flex"
+                  className="mt-2 flex items-center flex-wrap"
                 />
                 <div className="block md:flex items-center gap-5 mt-8">
                   <CountryLatitude latlng={data.latlng} />
