@@ -1,6 +1,7 @@
+import { FromLeft } from "@/lib/animation";
 import { CountryGeographyProps } from "@/types/interface";
-import React from "react";
 import { twMerge } from "tailwind-merge";
+import { motion as m } from "framer-motion";
 
 export default function CountryGeography({
   capital,
@@ -9,7 +10,15 @@ export default function CountryGeography({
   className,
 }: CountryGeographyProps) {
   return (
-    <div
+    <m.div
+      initial={FromLeft.initial}
+      animate={FromLeft.animate}
+      transition={{
+        type: "spring",
+        stiffness: 200,
+        duration: 0.5,
+        delay: 0.5,
+      }}
       className={twMerge(
         "listContainerShadow p-4 flex items-center justify-between gap-5 w-full md:w-[40%] relative pt-5 pb-8",
         className
@@ -31,6 +40,6 @@ export default function CountryGeography({
           </p>
         </p>
       </div>
-    </div>
+    </m.div>
   );
 }

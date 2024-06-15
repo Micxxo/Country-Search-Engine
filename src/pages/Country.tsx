@@ -17,6 +17,8 @@ import {
 import { useEffect, useState } from "react";
 import { MdArrowBack } from "react-icons/md";
 import { Link, useParams } from "react-router-dom";
+import { motion as m } from "framer-motion";
+import { FromLeft } from "@/lib/animation";
 
 export default function Country() {
   const { name } = useParams<{ name: string }>();
@@ -103,23 +105,57 @@ export default function Country() {
         .map((data, key) => {
           return (
             <section className="p-5 md:p-16" key={key}>
-              <Link to={"/"}>
-                <Button className="gap-2">
-                  <MdArrowBack className="text-xl" />
-                  Back To Homepage
-                </Button>
-              </Link>
+              <m.div
+                initial={FromLeft.initial}
+                animate={FromLeft.animate}
+                transition={{
+                  type: "spring",
+                  stiffness: 200,
+                  duration: 0.5,
+                  delay: 0.1,
+                }}
+              >
+                <Link to={"/"}>
+                  <Button className="gap-2">
+                    <MdArrowBack className="text-xl" />
+                    Back To Homepage
+                  </Button>
+                </Link>
+              </m.div>
               <div className="mt-5">
                 <div className="flex items-center gap-3">
-                  <h1 className="text-5xl font-bold">{data.name.common}</h1>
-                  <img
+                  <m.h1
+                    initial={FromLeft.initial}
+                    animate={FromLeft.animate}
+                    transition={{
+                      type: "spring",
+                      stiffness: 200,
+                      duration: 0.5,
+                      delay: 0.2,
+                    }}
+                    className="text-5xl font-bold"
+                  >
+                    {data.name.common}
+                  </m.h1>
+                  <m.img
+                    initial={FromLeft.initial}
+                    animate={FromLeft.animate}
+                    transition={{
+                      type: "spring",
+                      stiffness: 200,
+                      duration: 0.5,
+                      delay: 0.3,
+                    }}
                     src={data.flags.svg}
                     width={46}
                     height={30}
                     className="mt-3"
                   />
                 </div>
-                <CountryBadges datas={data.altSpellings} className="mt-2" />
+                <CountryBadges
+                  datas={data.altSpellings}
+                  className="mt-2 flex"
+                />
                 <div className="block md:flex items-center gap-5 mt-8">
                   <CountryLatitude latlng={data.latlng} />
                   <CountryGeography
@@ -130,7 +166,17 @@ export default function Country() {
                   />
                 </div>
                 <div className="block md:flex items-center mt-10">
-                  <div className="w-full md:w-[45%]">
+                  <m.div
+                    initial={FromLeft.initial}
+                    animate={FromLeft.animate}
+                    transition={{
+                      type: "spring",
+                      stiffness: 200,
+                      duration: 0.5,
+                      delay: 0.6,
+                    }}
+                    className="w-full md:w-[45%]"
+                  >
                     <h1 className="text-xl font-medium">Calling Code</h1>
                     <h1 className="text-5xl text-primary font-bold py-2">
                       {combinedCountryCode}
@@ -143,9 +189,19 @@ export default function Country() {
                       />{" "}
                       with this calling code
                     </p>
-                  </div>
+                  </m.div>
 
-                  <div className="my-5 md:mt-0">
+                  <m.div
+                    initial={FromLeft.initial}
+                    animate={FromLeft.animate}
+                    transition={{
+                      type: "spring",
+                      stiffness: 200,
+                      duration: 0.5,
+                      delay: 0.7,
+                    }}
+                    className="my-5 md:mt-0"
+                  >
                     <h1 className="text-xl font-medium">Currency</h1>
                     <h1 className="text-5xl text-primary font-bold py-2">
                       {Object.keys(data.currencies)}
@@ -158,7 +214,7 @@ export default function Country() {
                       />{" "}
                       with this currency
                     </p>
-                  </div>
+                  </m.div>
                 </div>
               </div>
             </section>

@@ -3,6 +3,8 @@ import { twMerge } from "tailwind-merge";
 import Globe from "../../assets/svgs/globe.svg";
 import { ArrayToString } from "@/helper/formatter";
 import { useEffect, useState } from "react";
+import { FromLeft } from "@/lib/animation";
+import { motion as m } from "framer-motion";
 
 export default function CountryLatitude({
   latlng,
@@ -17,7 +19,15 @@ export default function CountryLatitude({
   }, []);
 
   return (
-    <div
+    <m.div
+      initial={FromLeft.initial}
+      animate={FromLeft.animate}
+      transition={{
+        type: "spring",
+        stiffness: 200,
+        duration: 0.5,
+        delay: 0.4,
+      }}
       className={twMerge(
         "listContainerShadow p-4 flex items-center justify-between gap-5 w-full md:w-[45%] relative pt-5 pb-8",
         className
@@ -32,6 +42,6 @@ export default function CountryLatitude({
       <div className="absolute bottom-0 right-0">
         <img src={Globe} alt="My SVG Image" width={204} height={120} />
       </div>
-    </div>
+    </m.div>
   );
 }

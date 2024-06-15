@@ -3,10 +3,15 @@ import { IoIosSearch } from "react-icons/io";
 import { Label } from "../ui/label";
 import { twMerge } from "tailwind-merge";
 import { InputFormProps } from "@/types/interface";
+import { motion as m } from "framer-motion";
+import { FadeUp } from "@/lib/animation";
 
 export default function InputForm({ className, onChange }: InputFormProps) {
   return (
-    <div
+    <m.div
+      initial={FadeUp.initial}
+      animate={FadeUp.animate}
+      transition={{ type: "spring", duration: 2, delay: 0.3 }}
       className={twMerge(
         " flex items-center justify-center px-5 md:px-0",
         className
@@ -24,6 +29,6 @@ export default function InputForm({ className, onChange }: InputFormProps) {
       >
         <IoIosSearch className="text-accent text-2xl" />
       </Label>
-    </div>
+    </m.div>
   );
 }

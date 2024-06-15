@@ -3,6 +3,8 @@ import { searchCountry } from "@/services/APIRepository/CountryRepository";
 import { Country } from "@/types/types";
 import { useState } from "react";
 import { debounce } from "lodash";
+import { motion as m } from "framer-motion";
+import { FadeUp } from "@/lib/animation";
 
 export default function Home() {
   const [countries, setCountries] = useState<Country[]>([]);
@@ -34,7 +36,18 @@ export default function Home() {
   return (
     <section className="flex items-center justify-center h-screen">
       <div className="w-full">
-        <h1 className="text-7xl text-center font-bold">Country</h1>
+        <m.h1
+          initial={FadeUp.initial}
+          animate={FadeUp.animate}
+          transition={{
+            type: "spring",
+            duration: 1.5,
+            delay: 0.2,
+          }}
+          className="text-7xl text-center font-bold"
+        >
+          Country
+        </m.h1>
         <SearchCountry
           onChange={handleSearchChange}
           countryDatas={countries}
