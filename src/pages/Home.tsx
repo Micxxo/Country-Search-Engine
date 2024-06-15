@@ -19,7 +19,6 @@ export default function Home() {
       else setNoData(false);
       setCountries(response);
     } catch (error) {
-      console.error("Error:", error);
       setNoData(true);
     } finally {
       setLoading(false);

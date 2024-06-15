@@ -10,7 +10,6 @@ export default function ListContainer({
   loading,
   noData,
 }: ListContainerProps) {
-  console.log(datas.slice(0, 6));
   return (
     <div
       className={twMerge(

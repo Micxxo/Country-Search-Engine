@@ -4,6 +4,13 @@ import CountryGeography from "@/components/organism/CountryGeography";
 import CountryLatitude from "@/components/organism/CountryLatitude";
 import CountryPageSkeleton from "@/components/organism/CountryPageSkeleton";
 import { Button } from "@/components/ui/button";
+import { useEffect, useState } from "react";
+import { MdArrowBack } from "react-icons/md";
+import { Link, useParams } from "react-router-dom";
+import { motion as m } from "framer-motion";
+import { FromLeft } from "@/lib/animation";
+import NotFound from "./NotFound";
+import { Helmet } from "react-helmet-async";
 import {
   getByCallingCode,
   getByCurrency,
@@ -14,13 +21,6 @@ import {
   CountryCurrenciesType,
   Country as CountryType,
 } from "@/types/types";
-import { useEffect, useState } from "react";
-import { MdArrowBack } from "react-icons/md";
-import { Link, useParams } from "react-router-dom";
-import { motion as m } from "framer-motion";
-import { FromLeft } from "@/lib/animation";
-import NotFound from "./NotFound";
-import { Helmet } from "react-helmet-async";
 
 export default function Country() {
   const { name } = useParams<{ name: string }>();
@@ -37,6 +37,7 @@ export default function Country() {
         const response = await searchCountry(name);
         setCountries(response);
       } catch (error) {
+        setLoading(true);
       } finally {
         setLoading(false);
       }
