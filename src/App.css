@@ -2,3 +2,17 @@
   max-width: 1280px;
   margin: 0 auto;
 }
+
+.listContainerShadow {
+  box-shadow: 4px 4px 4px 0px #00000005, -4px -4px 4px 0px #00000005;
+}
+
+img {
+  user-drag: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  pointer-events: none;
+}

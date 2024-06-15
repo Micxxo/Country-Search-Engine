@@ -6,11 +6,16 @@ import { InputFormProps } from "@/types/interface";
 
 export default function InputForm({ className, onChange }: InputFormProps) {
   return (
-    <div className={twMerge(" flex items-center justify-center", className)}>
+    <div
+      className={twMerge(
+        " flex items-center justify-center px-5 md:px-0",
+        className
+      )}
+    >
       <Input
         id="input"
         placeholder="Type any country name"
-        className="w-1/2 border-accent border-[0.5px] placeholder:text-accent focus-visible:border-primary focus-visible:border-2 focus-visible:border-r-0 focus-visible:ring-0 focus-visible:ring-offset-0 border-r-0 rounded-tr-none rounded-br-none h-14 peer"
+        className="w-full md:w-1/2 border-accent border-[0.5px] placeholder:text-accent focus-visible:border-primary focus-visible:border-2 focus-visible:border-r-0 focus-visible:ring-0 focus-visible:ring-offset-0 border-r-0 rounded-tr-none rounded-br-none h-14 peer"
         onChange={onChange}
       />
       <Label
