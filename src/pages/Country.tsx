@@ -20,6 +20,7 @@ import { Link, useParams } from "react-router-dom";
 import { motion as m } from "framer-motion";
 import { FromLeft } from "@/lib/animation";
 import NotFound from "./NotFound";
+import { Helmet } from "react-helmet-async";
 
 export default function Country() {
   const { name } = useParams<{ name: string }>();
@@ -90,6 +91,10 @@ export default function Country() {
 
   return (
     <>
+      <Helmet>
+        <title>{name} | Country Search Engine</title>
+        <meta name="Country Page" content="Information about related country" />
+      </Helmet>
       {countries.length === 0 && !loading && <NotFound />}
       {loading && <CountryPageSkeleton />}
       {countries
