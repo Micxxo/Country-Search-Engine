@@ -157,7 +157,7 @@ export type Country = {
   };
   population: number;
   gini: {
-    "2019": Float32Array;
+    [key: string]: Float32Array;
   };
   fifa: string;
   car: {
