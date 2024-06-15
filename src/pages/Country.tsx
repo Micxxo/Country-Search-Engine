@@ -19,6 +19,7 @@ import { MdArrowBack } from "react-icons/md";
 import { Link, useParams } from "react-router-dom";
 import { motion as m } from "framer-motion";
 import { FromLeft } from "@/lib/animation";
+import NotFound from "./NotFound";
 
 export default function Country() {
   const { name } = useParams<{ name: string }>();
@@ -27,20 +28,14 @@ export default function Country() {
   const [sameCallingCode, setSameCallingCode] = useState<CallingCodeType[]>([]);
   const [sameCurrency, setSameCurrency] = useState<CountryCurrenciesType[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
-  const [noData, setNoData] = useState<boolean>(false);
 
   const getCountry = async () => {
     if (name) {
       try {
         setLoading(true);
         const response = await searchCountry(name);
-        if (response === null) setNoData(true);
-        else {
-          setNoData(false);
-          setCountries(response);
-        }
+        setCountries(response);
       } catch (error) {
-        setNoData(true);
       } finally {
         setLoading(false);
       }
@@ -61,7 +56,7 @@ export default function Country() {
       const response = await getByCallingCode(combinedCountryCode);
       setSameCallingCode(response);
     } catch (error) {
-      setNoData(true);
+      setLoading(false);
     }
   };
 
@@ -74,7 +69,7 @@ export default function Country() {
         }
       }
     } catch (error) {
-      setNoData(true);
+      setLoading(false);
     }
   };
 
@@ -93,12 +88,9 @@ export default function Country() {
     }
   }, [combinedCountryCode]);
 
-  useEffect(() => {
-    console.log(sameCurrency);
-  }, [sameCurrency]);
-
   return (
     <>
+      {countries.length === 0 && !loading && <NotFound />}
       {loading && <CountryPageSkeleton />}
       {countries
         .filter((item) => item.name.common === name)
