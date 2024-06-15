@@ -1,6 +1,18 @@
 import { CallingCodeType, Country, CountryCurrenciesType } from "@/types/types";
 import { axiosInstance } from "../API";
 
+export const getAll = async (): Promise<Country[]> => {
+  try {
+    const response = await axiosInstance.get<Country[]>(
+      `/${import.meta.env.VITE_API_VERSION_LATEST}/all`
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching country data:", error);
+    return [];
+  }
+};
+
 export const searchCountry = async (name: string): Promise<Country[]> => {
   try {
     const response = await axiosInstance.get<Country[]>(
