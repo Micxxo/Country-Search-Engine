@@ -18,7 +18,7 @@ export default function ListContainer({
         className
       )}
     >
-      {loading && <Skeleton className="w-full h-[30px]" />}
+      {loading && <Skeleton className="w-full h-[30px] rounded-none" />}
       {!loading &&
         datas.slice(0, 5).map((data, key) => (
           <Link to={`/country/${data.name.common}`}>
